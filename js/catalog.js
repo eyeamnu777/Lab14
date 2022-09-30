@@ -3,7 +3,7 @@
 'use strict';
 
 // Set up an empty cart for use on this page.
-const cart = new Cart([]);
+const cart = localStorage.cart ? new Cart (JSON.parse(localstorage.cart)) : new Cart([]);
 
 // On screen load, we call this method to put all of the product options
 // (the things in the Product.allProducts array) into the drop down list.
@@ -12,7 +12,11 @@ function populateForm() {
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
   for (let i in Product.allProducts) {
-
+    or (let i in Product.allProducts) {
+      let option = document.createElement('option');
+      option.value = Product.allProducts[i].name;
+      option.textContent = Product.allProducts[i].name;
+      selectElement.appendChild(option);
   }
 
 }
